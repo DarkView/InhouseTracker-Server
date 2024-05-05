@@ -16,7 +16,7 @@ export class MatchController {
     }
 
     addMatch(data: any ) {
-        const newMatch = new Match(data.groupCode, data.team1.toUpperCase(), data.team2.toUpperCase(), data.isRanked);
+        const newMatch = new Match(data.groupCode, data.leftTeam, data.rightTeam);
         this.matches[data.groupCode] = newMatch;
 
         Log.info(`New match "${newMatch.groupCode}" registered!`);
@@ -35,13 +35,13 @@ export class MatchController {
         }
     }
 
-    isValidMatch(json: any) {
-        const match = this.matches[json.groupCode]
-        if (match != null) {
-            return match.isValidTeam(json.teamName.toUpperCase());
+    createMatchFromLogon(data: any) {
+        if (this.matches[data.groupCode] != null) {
+            return false;
         }
 
-        return false;
+        this.addMatch(data);
+        return true;
     }
 
     receiveMatchData(data: IAuthedData) {

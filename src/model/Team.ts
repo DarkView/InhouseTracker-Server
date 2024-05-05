@@ -5,6 +5,9 @@ const Log = logging("Team");
 
 export class Team {
     public teamName;
+    public teamTricode;
+    public teamUrl;
+
     public isAttacking: boolean = false;
     private hasHandledTeam: boolean = false;
     public roundsWon: number = 0;
@@ -15,8 +18,10 @@ export class Team {
     private players: Player[] = [];
     private playerCount = 0;
 
-    constructor(teamName: string) {
-        this.teamName = teamName.toUpperCase();
+    constructor(teamName: string, teamTricode: string, teamUrl: string) {
+        this.teamName = teamName;
+        this.teamTricode = teamTricode.toUpperCase();
+        this.teamUrl = teamUrl;
     }
 
     receiveTeamSpecificData(data: IAuthedData) {

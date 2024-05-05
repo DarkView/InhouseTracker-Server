@@ -34,20 +34,19 @@ export class WebsocketIncoming {
                 Log.info(`${user.name} encountered a Websocket error.`);
             });
 
-            ws.once('message', (msg) => {
+            ws.once('message', (msg: any) => {
                 const json = JSON.parse(msg.toString());
-                if (json.type === DataTypes.AUTH && this.matchController.isValidMatch(json)) {
+                if (json.type === DataTypes.AUTH && this.matchController.createMatchFromLogon(json)) {
                     ws.send(JSON.stringify({type: DataTypes.AUTH, value: true}));
                     user.name = json.playerName;
-                    user.team = json.teamName.toUpperCase();
                     this.authedClients.push(user);
 
-                    Log.info(`Received VALID auth request from ${json.playerName}, using Group Code ${json.groupCode} and Team name ${json.teamName.toUpperCase()}`);
+                    Log.info(`Received VALID auth request from ${json.playerName}, using Group Code ${json.groupCode}`);
                     this.onAuthSuccess(user);
                 } else {
                     ws.send(JSON.stringify({type: DataTypes.AUTH, value: false}));
                     ws.close();
-                    Log.info(`Received BAD auth request from ${json.playerName}, using Group Code ${json.groupCode} and Team name ${json.teamName.toUpperCase()}`);
+                    Log.info(`Received BAD auth request from ${json.playerName}, using Group Code ${json.groupCode}`);
                 }
             });
 
@@ -69,12 +68,10 @@ export class WebsocketIncoming {
 
 class ClientUser {
     name: string;
-    team: string;
     ws: WebSocket;
     
     constructor(name: string, team: string, ws: WebSocket) {
         this.name = name;
-        this.team = team;
         this.ws = ws;
     }
 }

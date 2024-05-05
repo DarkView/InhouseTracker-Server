@@ -46,7 +46,7 @@ export interface IFormattedScore {
 
 export interface IAuthedData {
     playerName: string,
-    teamName: string,
+    teamTricode: string,
     groupCode: string,
     type: string,
     timestamp: number,
