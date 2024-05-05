@@ -6,7 +6,7 @@
   "main": "",
   "scripts": {
     "start": "npm run dev",
-    "start_single": "ts-node ./src/index.ts", 
+    "start_single": "ts-node ./src/index.ts",
     "dev": "nodemon ./src/index.ts",
     "replay": "ts-node ./src/replay/replay.ts",
     "replay_instant": "ts-node ./src/replay/replay.ts -instant",
@@ -35,6 +35,7 @@
     "eventsource": "^2.0.2",
     "express": "^4.18.3",
     "lodash": "^4.17.21",
+    "redis": "^4.6.13",
     "ws": "^8.16.0"
   }
 }

@@ -29,7 +29,7 @@ export class Match {
 
     public ranks: { team1: string[], team2: string[] } = { team1: [], team2: [] };
 
-    private replayLog: ReplayLogging;
+    public replayLog: ReplayLogging;
     public eventNumber: number = 0;
 
     constructor(groupCode: string, leftTeam: BasicTeam, rightTeam: BasicTeam) {
@@ -44,14 +44,6 @@ export class Match {
         this.teams.push(secondTeam);
 
         this.isRanked = false;
-
-        this.startSendLoop();
-    }
-
-    startSendLoop() {
-        setInterval(() => {
-            sendMatchToEventstream(this);
-        }, 1000);
     }
 
     setRanks(data: any) {

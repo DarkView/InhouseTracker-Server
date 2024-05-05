@@ -11,7 +11,7 @@ export function setupEventStream() {
     // eventStreamSource.addEventListener("streamdeck", processStreamEvent);
 
     // Debug match setup
-    // matchController.addMatch({type: "inhouse-tracker", name: "addMatch", groupCode: "A", team1: "TESTTEAM", team2: "Hooj", isRanked: false});
+    matchController.addMatch({type: "inhouse-tracker", groupCode: "A", leftTeam: {name: "TestTeam Full Name", tricode: "TESTTEAM", url: "https://i.bfz.moe/underpeel/logos/ABP.png"}, rightTeam: {name: "Hooj Team Full Name", tricode: "HOOJ", url: "https://i.bfz.moe/underpeel/logos/RAZE.png"}});
     // matchController.setRanks({type: "inhouse-tracker", name: "rankInfo", groupCode: "A", ranks: {team1: ["Iron_1", "Immortal_2", "Diamond_3", "Silver_3", "Radiant"], team2: ["Iron_3", "Diamond_1", "Ascdendant_2", "Radiant", "Ascendant_3"]}});
 }
 
