@@ -76,12 +76,6 @@ export class Match {
                 this.spikeDefused = false;
             }
 
-            if (this.roundPhase == "shopping" && (this.roundNumber == 13 || this.roundNumber >= 25)) {
-                for (const team of this.teams) {
-                    team.isAttacking = !team.isAttacking;
-                }
-            }
-
             if (this.roundPhase == "end") {
                 for (const team of this.teams) {
                     team.resetRoundSpent();

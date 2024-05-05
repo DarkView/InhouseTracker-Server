@@ -40,10 +40,7 @@ export class Team {
                 break;
 
             case DataTypes.TEAM_IS_ATTACKER:
-                if (!this.hasHandledTeam) {
-                    this.isAttacking = data.data as boolean;
-                    this.hasHandledTeam = true;
-                }
+                this.isAttacking = data.data as boolean;
                 break;
 
             case DataTypes.SCORE:
